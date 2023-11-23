@@ -9,7 +9,7 @@ export default async function UsersPage({searchParams}) {
   const q=searchParams?.q || "";
   const page= searchParams?.page || 1;
 
-  const users=await fetchUsers(q,page);
+  const {count,users}=await fetchUsers(q,page);
   
 
   return (
@@ -61,7 +61,7 @@ export default async function UsersPage({searchParams}) {
         }
         </tbody>
       </table>
-      <Paginatoin/>
+      <Paginatoin count={count}/>
     </div>
   )
 }
